@@ -1,15 +1,13 @@
-import * as React from 'react';
-import type { FC } from 'react';
-import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import InputBase from '@mui/material/InputBase';
+import { alpha, styled } from '@mui/material/styles';
+import Toolbar from '@mui/material/Toolbar';
+import type { FC } from 'react';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -67,14 +65,13 @@ export const Header: FC = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            江東区柔道会
-          </Typography>
+          <Box sx={{ display: { xs: 'none', sm: 'block' }, height: 48 }}>
+            <img
+              src="/src/assets/organizations/koto-judo-logo.png"
+              alt="江東区柔道会ロゴ"
+              style={{ height: '50px', objectFit: 'contain' }}
+            />
+          </Box>
           <Box sx={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
             <Button color="inherit">トップページ</Button>
             <Button color="inherit">江東区柔道会について</Button>
