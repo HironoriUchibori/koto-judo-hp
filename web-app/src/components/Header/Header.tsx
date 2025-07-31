@@ -54,7 +54,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export const Header: FC = () => {
   return (
     <Box sx={{ flexGrow: 1, width: '100vw' }}>
-      <AppBar position="fixed" sx={{ backgroundColor: 'black' }}>
+      <AppBar position="static" sx={{ backgroundColor: 'black' }}>
         <Toolbar>
           <IconButton
             size="large"

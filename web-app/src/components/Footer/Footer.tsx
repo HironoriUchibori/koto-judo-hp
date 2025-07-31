@@ -11,7 +11,7 @@ export const Footer: React.FC = () => (
       color: 'white',
       py: 2,
       textAlign: 'center',
-      position: 'fixed',
+      position: 'static',
       bottom: 0,
       left: 0,
       width: '100vw',
