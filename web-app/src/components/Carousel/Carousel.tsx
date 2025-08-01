@@ -20,12 +20,16 @@ export const Carousel: React.FC = () => {
     { image: '/src/assets/samples/sample_5.jpg', text: 'スライド5のテストです' },
   ];
 
-  return (
+  return ( 
     <Swiper
       // install Swiper modules
       modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
       loop={true}
-      spaceBetween={20}
+      speed={3000} // 少しゆっくり(デフォルトは300)
+      autoplay={{
+        delay: 5000 // 5秒後に次のスライド
+      }}
+      spaceBetween={0}
       slidesPerView={3}
       navigation
       pagination={{ el: '.swiper-pagination',clickable: true }}
