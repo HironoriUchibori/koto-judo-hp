@@ -2,7 +2,7 @@
 
 .panel-container {
   position: relative;
-  width: 40vw;
+  width: 33.3vw;
   aspect-ratio: 16 / 9; /* 縦横比を指定（例：16:9） */
   overflow: hidden;
   object-position: center center;
