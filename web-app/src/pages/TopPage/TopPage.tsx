@@ -1,22 +1,11 @@
 import { Carousel } from "../../components/Carousel/Carousel";
+import NewsTable from "../../components/NewsTable/NewsTable";
 
 function TopPage() {
   return (
     <>
       <Carousel />
-      {/* <div >
-        <h1>Hello, World!</h1>
-        <h1>Hello, World!</h1>
-        <h1>Hello, World!</h1>
-        <h1>Hello, World!</h1>
-        <h1>Hello, World!</h1>
-        <h1>Hello, World!</h1>
-        <h1>Hello, World!</h1>
-        <h1>Hello, World!</h1>
-        <h1>Hello, World!</h1>
-        <h1>Hello, World!</h1>
-        <h1>Hello, World!</h1>
-      </div> */}
+      <NewsTable />
     </>
   );
 }

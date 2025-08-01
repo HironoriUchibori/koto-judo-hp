@@ -1,0 +1,22 @@
+
+.swiper-button-next,.swiper-button-prev{
+    background-color: #000;/* ボタンの背景色 */
+    width: 50px;
+    height: 50px;
+}
+.swiper-button-next{
+    right: 31vw;/* ボタンを右端にくっつける */
+}
+.swiper-button-prev{
+    left: 31vw;/* ボタンを左端にくっつける */
+}
+.swiper-button-next::after{
+    content: '→';/* ボタンの矢印変更 */
+    color: #fff;
+    font-size: 1.5rem;
+}
+.swiper-button-prev::after{
+    content: '←';/* ボタンの矢印変更 */
+    color: #fff;
+    font-size: 1.5rem;
+}

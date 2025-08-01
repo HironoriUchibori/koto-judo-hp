@@ -11,6 +11,8 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import { Panel } from './Panel';
 
+import './Carousel.css'
+
 export const Carousel: React.FC = () => {
   const slides = [
     { image: '/src/assets/samples/sample_1.jpg', text: '江東区民大会のお知らせ' },
@@ -31,9 +33,9 @@ export const Carousel: React.FC = () => {
       }}
       spaceBetween={0}
       slidesPerView={3}
-      navigation
-      pagination={{ el: '.swiper-pagination',clickable: true }}
-      // scrollbar={{ draggable: true }}
+      navigation={{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }}
+      pagination={{ clickable: true }}
+      // scrollbar={{ draggable: true  }}
       // onSwiper={(swiper) => console.log(swiper)}
       // onSlideChange={() => console.log('slide change')}
     >
@@ -43,6 +45,8 @@ export const Carousel: React.FC = () => {
         </SwiperSlide>
       ))}
       <div className="swiper-pagination"></div>
+      <div className="swiper-button-prev"></div>
+      <div className="swiper-button-next"></div>
     </Swiper>
   );
 };
