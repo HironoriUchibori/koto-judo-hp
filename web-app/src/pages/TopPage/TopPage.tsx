@@ -1,7 +1,10 @@
+import { Carousel } from "../../components/Carousel/Carousel";
+
 function TopPage() {
   return (
     <>
-      <div className="w-screen">
+      <Carousel />
+      {/* <div >
         <h1>Hello, World!</h1>
         <h1>Hello, World!</h1>
         <h1>Hello, World!</h1>
@@ -13,7 +16,7 @@ function TopPage() {
         <h1>Hello, World!</h1>
         <h1>Hello, World!</h1>
         <h1>Hello, World!</h1>
-      </div>
+      </div> */}
     </>
   );
 }
