@@ -11,12 +11,12 @@
     left: 31vw;/* ボタンを左端にくっつける */
 }
 .swiper-button-next::after{
-    content: '→';/* ボタンの矢印変更 */
+    content: '＞';/* ボタンの矢印変更 */
     color: #fff;
     font-size: 1.5rem;
 }
 .swiper-button-prev::after{
-    content: '←';/* ボタンの矢印変更 */
+    content: '＜';/* ボタンの矢印変更 */
     color: #fff;
     font-size: 1.5rem;
 }

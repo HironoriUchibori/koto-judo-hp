@@ -20,6 +20,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -142,8 +143,12 @@ export const Header: FC = () => {
     { name: '道場案内', path: '/dojo', isHeader: true },
     { name: 'ご協賛企業', path: '/sponsors', isHeader: true },
     { name: 'お問い合わせ', path: '/contact', isHeader: true },
+    { name: '江東区柔道会役員', path: '/officers', isHeader: false },
+    { name: '年間スケジュール', path: '/schedule', isHeader: false },
+    { name: '大会記録', path: '/tournaments', isHeader: false },
+    { name: 'ご意見箱', path: '/feedback', isHeader: false }
   ];
-  
+
   return (
     <Box sx={{ flexGrow: 1, width: '100vw' }}>
       <AppBar position="static" sx={{ backgroundColor: 'black' }}>
@@ -162,13 +167,15 @@ export const Header: FC = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Box sx={{ display: { xs: 'none', sm: 'block' }, height: 48 }}>
-            <img
-              src="/src/assets/organizations/koto-judo-logo.png"
-              alt="江東区柔道会ロゴ"
-              style={{ height: '50px', objectFit: 'contain' }}
-            />
-          </Box>
+          <Link to="/">
+            <Box sx={{ display: { xs: 'none', sm: 'block' }, height: 48 }}>
+              <img
+                src="/src/assets/organizations/koto-judo-logo.png"
+                alt="江東区柔道会ロゴ"
+                style={{ height: '50px', objectFit: 'contain' }}
+              />
+            </Box>
+          </Link>
           <Box sx={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
             {page_links.map((link) => (
               link.isHeader && (
@@ -214,7 +221,7 @@ export const Header: FC = () => {
         <Divider />
         <List>
           {page_links.map((link, index) => (
-            <ListItem key={index} disablePadding>
+            link.isHeader && <ListItem key={index} disablePadding>
               <ListItemButton href={link.path}>
                 {/* <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -226,13 +233,13 @@ export const Header: FC = () => {
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
+          {page_links.map((link, index) => (
+            !link.isHeader && <ListItem key={index} disablePadding>
+              <ListItemButton href={link.path}>
+                {/* <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
+                </ListItemIcon> */}
+                <ListItemText primary={link.name} />
               </ListItemButton>
             </ListItem>
           ))}
