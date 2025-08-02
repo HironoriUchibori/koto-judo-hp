@@ -1,13 +1,25 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import AppBar from '@mui/material/AppBar';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import MuiAppBar, { type AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
-import { alpha, styled } from '@mui/material/styles';
+import { alpha, styled, useTheme } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import type { FC } from 'react';
+import React from 'react';
+import Divider from '@mui/material/Divider';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -51,17 +63,102 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const drawerWidth = 240;
+
+const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
+  open?: boolean;
+}>(({ theme }) => ({
+  flexGrow: 1,
+  padding: theme.spacing(3),
+  transition: theme.transitions.create('margin', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  marginLeft: `-${drawerWidth}px`,
+  variants: [
+    {
+      props: ({ open }) => open,
+      style: {
+        transition: theme.transitions.create('margin', {
+          easing: theme.transitions.easing.easeOut,
+          duration: theme.transitions.duration.enteringScreen,
+        }),
+        marginLeft: 0,
+      },
+    },
+  ],
+}));
+
+interface AppBarProps extends MuiAppBarProps {
+  open?: boolean;
+}
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== 'open',
+})<AppBarProps>(({ theme }) => ({
+  transition: theme.transitions.create(['margin', 'width'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  variants: [
+    {
+      props: ({ open }) => open,
+      style: {
+        width: `calc(100% - ${drawerWidth}px)`,
+        marginLeft: `${drawerWidth}px`,
+        transition: theme.transitions.create(['margin', 'width'], {
+          easing: theme.transitions.easing.easeOut,
+          duration: theme.transitions.duration.enteringScreen,
+        }),
+      },
+    },
+  ],
+}));
+
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+  justifyContent: 'flex-end',
+}));
+
 export const Header: FC = () => {
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
+  const page_links = [
+    { name: 'トップページ', path: '/', isHeader: true },
+    { name: '江東区柔道会について', path: '/about', isHeader: true },
+    { name: '道場案内', path: '/dojo', isHeader: true },
+    { name: 'ご協賛企業', path: '/sponsors', isHeader: true },
+    { name: 'お問い合わせ', path: '/contact', isHeader: true },
+  ];
+  
   return (
     <Box sx={{ flexGrow: 1, width: '100vw' }}>
       <AppBar position="static" sx={{ backgroundColor: 'black' }}>
         <Toolbar>
           <IconButton
-            size="large"
-            edge="start"
             color="inherit"
             aria-label="open drawer"
-            sx={{ mr: 2 }}
+            onClick={handleDrawerOpen}
+            edge="start"
+            sx={[
+              {
+                mr: 2,
+              },
+              open && { display: 'none' },
+            ]}
           >
             <MenuIcon />
           </IconButton>
@@ -73,11 +170,17 @@ export const Header: FC = () => {
             />
           </Box>
           <Box sx={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
-            <Button color="inherit" href='/'>トップページ</Button>
-            <Button color="inherit" href='/about'>江東区柔道会について</Button>
-            <Button color="inherit" href='/dojo'>道場案内</Button>
-            <Button color="inherit" href='/sponsors'>ご協賛企業</Button>
-            <Button color="inherit" href='/contact'>お問い合わせ</Button>
+            {page_links.map((link) => (
+              link.isHeader && (
+                <Button
+                  key={link.name}
+                  color="inherit"
+                  href={link.path}
+                >
+                  {link.name}
+                </Button>
+              )
+            ))}
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />
@@ -90,6 +193,51 @@ export const Header: FC = () => {
           </Box>
         </Toolbar>
       </AppBar>
+      <Drawer
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+          },
+        }}
+        variant="persistent"
+        anchor="left"
+        open={open}
+      >
+        <DrawerHeader>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          </IconButton>
+        </DrawerHeader>
+        <Divider />
+        <List>
+          {page_links.map((link, index) => (
+            <ListItem key={index} disablePadding>
+              <ListItemButton href={link.path}>
+                {/* <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon> */}
+                <ListItemText primary={link.name} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+            <ListItem key={text} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
     </Box>
   )
 }
