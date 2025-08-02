@@ -73,11 +73,11 @@ export const Header: FC = () => {
             />
           </Box>
           <Box sx={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
-            <Button color="inherit">トップページ</Button>
-            <Button color="inherit">江東区柔道会について</Button>
-            <Button color="inherit">道場案内</Button>
-            <Button color="inherit">ご協賛企業</Button>
-            <Button color="inherit">お問い合わせ</Button>
+            <Button color="inherit" href='/'>トップページ</Button>
+            <Button color="inherit" href='/about'>江東区柔道会について</Button>
+            <Button color="inherit" href='/dojo'>道場案内</Button>
+            <Button color="inherit" href='/sponsors'>ご協賛企業</Button>
+            <Button color="inherit" href='/contact'>お問い合わせ</Button>
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />

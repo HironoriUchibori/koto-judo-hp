@@ -119,7 +119,6 @@ export default function NewsTable() {
 
   return (
     <div className='news-table'>
-      <h3>新着情報</h3>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
           <TableBody>

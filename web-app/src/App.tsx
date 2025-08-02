@@ -1,16 +1,22 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css'
-import Layout from './components/Layout/Layout'
 import TopPage from './pages/TopPage/TopPage'
+import Layout from './components/Layout/Layout';
 
 
 function App() {
   return (
-    <>
-      <Layout>
-        <TopPage />
-      </Layout>
-    </>
+
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<TopPage />} />
+          {/* <Route path="about" element={<About />} />
+          <Route path="*" element={<NoMatch />} /> */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
+
   )
 }
 

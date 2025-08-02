@@ -1,0 +1,7 @@
+/* Layout.css */
+.layout-container {
+  background-color: #f3f4f6; /* Tailwindの bg-gray-100 相当 */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

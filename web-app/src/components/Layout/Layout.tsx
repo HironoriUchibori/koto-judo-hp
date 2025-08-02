@@ -1,12 +1,15 @@
+import './Layout.css'
 import { Header } from '../Header/Header'
 import { Footer } from '../Footer/Footer'
-import type { ReactNode } from 'react'
+import { Outlet } from 'react-router-dom'
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="layout-container">
       <Header />
-        {children}
+      <main style={{ flex: 1 }}>
+        <Outlet />
+      </main>
       <Footer />
     </div>
   )

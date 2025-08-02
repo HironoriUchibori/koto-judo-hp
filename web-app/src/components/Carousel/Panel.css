@@ -3,7 +3,7 @@
 .panel-container {
   position: relative;
   width: 33.3vw;
-  aspect-ratio: 16 / 9; /* 縦横比を指定（例：16:9） */
+  aspect-ratio: 16 / 10; /* 縦横比を指定（例：16:10） */
   overflow: hidden;
   object-position: center center;
 }
@@ -20,11 +20,11 @@
 .panel-overlay-text {
   position: absolute;
   bottom: 30px;   /* 下からのマージン */
-  left: 16px;     /* 左からのマージン */
+  left: 30px;     /* 左からのマージン */
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
   padding: 6px 10px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   font-size: 0.9em;
   text-align: left;
   max-width: 60%;
