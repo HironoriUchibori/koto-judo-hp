@@ -6,6 +6,7 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
+import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import LaptopMacIcon from '@mui/icons-material/LaptopMac';
 import HotelIcon from '@mui/icons-material/Hotel';
@@ -35,7 +36,7 @@ export default function CustomizedTimeline() {
           <Typography variant="h6" component="span">
             創立
           </Typography>
-          <Typography>Because you need strength</Typography>
+          <Typography>江東区柔道会発足</Typography>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
@@ -44,20 +45,20 @@ export default function CustomizedTimeline() {
           variant="body2"
           color="text.secondary"
         >
-          10:00 am
+          2007年
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineConnector />
           <TimelineDot color="primary">
-            <LaptopMacIcon />
+            <EmojiEventsOutlinedIcon />
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent sx={{ py: '12px', px: 2 }}>
           <Typography variant="h6" component="span">
-            Code
+            文部科学大臣表彰
           </Typography>
-          <Typography>Because it&apos;s awesome!</Typography>
+          <Typography>地域のスポーツ振興に貢献した団体として文部科学省から表彰される</Typography>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
